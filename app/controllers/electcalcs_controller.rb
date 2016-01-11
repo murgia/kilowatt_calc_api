@@ -1,6 +1,7 @@
 class ElectcalcController < ApplicationController
   def index
     @electcalcs = Electcalc.all
+    @appliances = Appliance.all
 
     render json: @electcalcs.to_json, status: :ok
   end
