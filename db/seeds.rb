@@ -39,7 +39,7 @@ appliances = Appliance.create([
   {name: "Water Heater", power: 140}
   ])
 
-  electcalc = Electcalc.create({state: "VA", avg_cost: 0.11 })
+  electcalc = Electcalc.create({state: "VA", avg_cost: 0.11, name: "Apartment" })
 
   estimates = Estimate.create([
     {appliance: Appliance.first, electcalc: electcalc, quantity: 10},
