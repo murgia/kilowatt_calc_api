@@ -1,14 +1,16 @@
 class ElectcalcsController < ApplicationController
   def index
-    @electcalcs = Electcalc.all
-    @appliances = Appliance.all
-
-    render json: @electcalcs.to_json, status: :ok
-  end
-
-  def show
-    @electcalc = Electcalc.find(params[:id])
-    render status: 200, json: @electcalc.to_json
+    # add total energy and total cost to electcalc JSON
+    out = []
+    Electcalc.all.each do |e|
+      energy = e.total_energy
+      cost = e.total_cost
+      e = e.as_json
+      e[:total_energy] = energy
+      e[:total_cost] = cost
+      out.push(e)
+    end
+    render json: out, status: :ok
   end
 
   def create

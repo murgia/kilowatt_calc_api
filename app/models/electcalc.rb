@@ -1,6 +1,6 @@
 class Electcalc < ActiveRecord::Base
   has_many :estimates
-
+  attr_accessor :t_energy
 
   def total_energy
     estimates = self.estimates
